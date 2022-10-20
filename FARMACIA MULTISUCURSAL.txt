@@ -1,0 +1,12 @@
+IMPLEMENTACION DEL AMBIENTE DE TRABAJO:
+
+HOSTING COMPATIBLE:
+hostinger por que es compatible 
+
+TICKETERA COMPATIBLE:
+ticketera epson con impresion continua
+y corte automatico de diametro de papel 80mm a mas
+
+
+usuario:  admin
+clave:  admin

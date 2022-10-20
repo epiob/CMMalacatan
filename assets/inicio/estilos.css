@@ -1,0 +1,15 @@
+.login-box,
+.register-box {
+    border-radius: 10px 100px / 120px;
+    width: 360px;
+    margin: 7% auto
+}
+
+@media (max-width:768px) {
+    .login-box,
+    .register-box {
+        border-radius: 10px 100px / 120px;
+        width: 90%;
+        margin-top: 20px
+    }
+}
