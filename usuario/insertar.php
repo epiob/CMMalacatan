@@ -61,7 +61,8 @@ $tipo="";
 								<label><strong>Tipo(*)</strong></label>
 								<select name="txttipo" class="form-control">
 																	<option value="ADMINISTRADOR" <?php if($tipo=='ADMINISTRADOR'){ echo 'selected'; } ?>>ADMINISTRADOR</option>
-																		<option value="USUARIO" <?php if($tipo=='USUARIO'){ echo 'selected'; } ?>>USUARIO</option>
+																	<option value="USUARIO" <?php if($tipo=='USUARIO'){ echo 'selected'; } ?>>USUARIO</option>
+																	<option value="BODEGA" <?php if($tipo=='BODEGA'){ echo 'selected'; } ?>>BODEGA</option>
 								</select>
 							</div>
 							<div class="col-md-6 form-group">

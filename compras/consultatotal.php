@@ -15,7 +15,7 @@ $data=$obj->consultar("SELECT ROUND(SUM(importe)*$impuesto/100+SUM(importe),2) a
 			$total=$row['total'];
 		}
 ?>
-<h1 align="center"><?php  if($total==null){echo "$mon".''."0.00";}else{echo "$mon".' '."$total";}?></h1>
+<h1 align="center">Datos</h1>
 
 
 <script>

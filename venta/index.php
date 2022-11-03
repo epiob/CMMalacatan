@@ -37,137 +37,149 @@ $result=$obj->consultar("select MAX(num_docu) as numero from venta WHERE idsucu_
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<link rel="stylesheet" href="../assets/alert/alertify/alertify.css">
-<link rel="stylesheet" href="../assets/alert/alertify/themes/default.css">
-<link rel="stylesheet" href="../assets/alert/jquery-ui.css">
+    <link rel="stylesheet" href="../assets/alert/alertify/alertify.css">
+    <link rel="stylesheet" href="../assets/alert/alertify/themes/default.css">
+    <link rel="stylesheet" href="../assets/alert/jquery-ui.css">
+    <style>
+    .modal-backdrop {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1050;
+        background-color: #000000;
+    }
+    </style>
 </head>
+
 <body class="page-body">
-<div class="page-container">
-<div class="main-content">
-  	<?php include('../central/cabecera.php');?>
-    <div class="panel-title">
-      <b>Venta</b>
-    </div>
-	    <div class="row">
-	        <div class="col-sm-9">
-	        <div class="panel panel-info">
-	            <div class="panel-body">
-							<label><strong>Producto:</strong></label>
-            		<div class="col-sm-12">
-            				<form name="barcode" id="barcode_form">
-            								<div class="input-group">
-            										 <input type="text" class="form-control"  placeholder="ingrese el codigo de barras" name="cod" id="cod">
-            										<div class="input-group-btn">
-            											<button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-barcode"></span></button>
-            										</div>
-            						    </div>
-            					</form>
-            	</div><br>
-<form name="nuevo" action="guardarventa.php" method="post">
-	<div class="col-sm-12">
-		<button type="button" class="btn btn-info" onclick="jQuery('#modal-1').modal('show');"><span class="glyphicon glyphicon-search"></span> BUSCAR</button>
-	</div>
-	    </div>
-	          </div>
-												<div class="panel panel-info">
-  													<div class="table-responsive">
-  														 <div id="live_data"></div>
-  												 </div>
-												 </div>
+    <div class="page-container">
+        <div class="main-content">
+            <?php include('../central/cabecera.php');?>
+            <div class="panel-title">
+                <b>Egreso</b>
+            </div>
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="panel panel-info">
+                        <div class="panel-body">
+                            <!-- <label><strong>Producto:</strong></label> -->
+                            <div class="col-sm-12">
+                                <form name="barcode" id="barcode_form">
 
-                         <div class="panel panel-info">
-                           <div class="panel-footer">
+                                    <div class="input-group-btn">
+
+                                    </div>
+                                </form>
+                            </div><br>
+                            <form name="nuevo" action="guardarventa.php" method="post">
+                                <div class="col-sm-12">
+                                    <button type="button" class="btn btn-info"
+                                        onclick="jQuery('#modal-1').modal('show');"><span
+                                            class="glyphicon glyphicon-search"></span> BUSCAR</button>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="table-responsive">
+                            <div id="live_data"></div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-footer">
                             <div align="center">
-																 <button type="button" class="btn btn-info" onClick="location.href='limpiar.php'" ><span class="glyphicon glyphicon-refresh"> Nuevo</span></button>
-																<button type="submit"  class="btn btn-primary"><span class="glyphicon glyphicon glyphicon-floppy-saved"> Registrar</span></button>
-															 </div>
-														 </div>
-                          </div>
-	          </div>
-	        <div class="col-sm-3">
-	                <div class="row">
-	                    <div class="col-sm-12">
-												<div class="panel panel-info">
-												<div class="panel-heading"><div id="live_total"></div></div>
-												</div>
-	                      </div>
-	                    <div class="col-sm-12">
-	                          <div class="panel panel-info">
-	                              <div class="panel-body">
-                                  <table class="table">
-                                    <tr>
-                                    <td class="col-md-4">SERIE:<input type="text" class="form-control"required readonly="true" name="serie" id="serie" value="<?php echo "$serie"; ?>"/></td>
-                                    <td class="col-md-6">NUMERO:<input type="text"class="form-control" required readonly="true" name="numdocu" id="numdocu"  value="<?php echo "$numti"; ?>"/></td>
-                                    </tr>
-                                </table>
-														<label>CLIENTE:</label>
-                            	<input type="hidden" required name="idcliente" id="idcliente" /><br>
-														<input type="text" required name="cli" id="cli" required class="form-control" value="publico en general"/><br>
-
-														<label>DPI:</label>
-														<input type="text" required name="documento" id="documento" class="form-control" readonly="true"/><br>
-
-														<label>FECHA DE EMISION:</label>
-														<input type="text"id="fecha" name="fecha" value="<?php echo (date('Y-m-d'));?>" class="form-control"readonly /><br>
-
-                            <div class="table-responsive">
-                            <div id="live_igv"></div>
-<table>
-  <tr>
-    <td width="100" >EFECTIVO:</td>
-    <td width="200">
-      <div class="input-group">
-                <input type="number" min="1" id="recibo" name="recibo" class="form-control" required="true"/>
-                  <span class="input-group-btn">
-                    <button type="button" value="calcular" id="calcular" class="btn btn-info"><i class="entypo-minus"></i></button>
-                  </span>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td width="65">VUELTO:</td>
-    <td width="144"><h5></h5>
-      <input type="text" id="vuelto" name="vuelto" readonly class="form-control" required="true"/></td>
-  </tr>
-</table>
-
-
+                                <button type="button" class="btn btn-info" onClick="location.href='limpiar.php'"><span
+                                        class="glyphicon glyphicon-refresh"> Limpiar</span></button>
+                                <button type="submit" class="btn btn-primary"><span
+                                        class="glyphicon glyphicon glyphicon-floppy-saved"> Registrar</span></button>
                             </div>
-	                              </div>
-	                          </div>
-	                    </div>
-	                </div>
-	        </div>
-	    </div>
-</form>
-	</div>
-	<!-- Modal busquedaproductos-->
-	<div class="modal fade" id="modal-1">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Productos Farmaceuticos</h4>
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered datatable" id="table-1">
-					        <thead>
-											<tr class="info">
-											<th data-hide="phone"><a href="#">#</a></th>
-											<th><a href="#">Descripcion</a></th>
-											<th><a href="#">Presentacion</a></th>
-											<th data-hide="phone"><a href="#">Precio</a></th>
-											<th><a href="#">Sintoma</a></th>
-											<th><a href="#">Con receta</a></th>
-											<th data-hide="phone"><a href="#">Estado</a></th>
-											<th data-hide="phone"><a href="#">Stock</a></th>
-					            <th data-hide="phone,tablet"><a href="#">Tipo</a></th>
-											<th>Accion</th>
-										  </tr>
-							</thead>
-									<tbody>
-							<?php
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <div id="live_total"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <tr>
+                                            <td class="col-md-4">SERIE:<input type="text" class="form-control" required
+                                                    readonly="true" name="serie" id="serie"
+                                                    value="<?php echo "$serie"; ?>" /></td>
+                                            <td class="col-md-6">NUMERO:<input type="text" class="form-control" required
+                                                    readonly="true" name="numdocu" id="numdocu"
+                                                    value="<?php echo "$numti"; ?>" /></td>
+                                        </tr>
+                                    </table>
+                                    <label>CLIENTE:</label>
+                                    <button type="button" class="btn btn-primary"
+                                        onclick="jQuery('#modal-2').modal('show');">
+                                        <i class="entypo-plus"></i> Agregar</button>
+                                    <input type="hidden" required name="idcliente" id="idcliente" /><br>
+                                    <input type="text" required name="cli" id="cli" required class="form-control"
+                                        value="publico en general" /><br>
+
+                                    <label>DPI:</label>
+                                    <input type="text" required name="documento" id="documento" class="form-control"
+                                        readonly="true" /><br>
+
+                                    <label>FECHA DE EMISION:</label>
+                                    <input type="text" id="fecha" name="fecha" value="<?php echo (date('Y-m-d'));?>"
+                                        class="form-control" readonly /><br>
+
+                                    <div class="table-responsive">
+                                        <div id="live_igv"></div>
+                                        <table>
+
+                                        </table>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+        <!-- Modal busquedaproductos-->
+        <div class="modal fade" id="modal-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Productos Farmaceuticos</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered datatable" id="table-1">
+                            <thead>
+                                <tr class="info">
+                                    <th data-hide="phone"><a href="#">#</a></th>
+                                    <th><a href="#">Descripcion</a></th>
+                                    <th><a href="#">Presentacion</a></th>
+                                    <th data-hide="phone"><a href="#">Precio</a></th>
+                                    <th><a href="#">Sintoma</a></th>
+                                    <th><a href="#">Con receta</a></th>
+                                    <th data-hide="phone"><a href="#">Estado</a></th>
+                                    <th data-hide="phone"><a href="#">Stock</a></th>
+                                    <th data-hide="phone,tablet"><a href="#">Tipo</a></th>
+                                    <th>Accion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
 							foreach((array)$resultdes as $row){
 									$item[$index] = $row;
 									if($row['stock']<=$row['stockminimo']) {
@@ -188,267 +200,346 @@ $result=$obj->consultar("select MAX(num_docu) as numero from venta WHERE idsucu_
 									 $estado="<span class='label label-danger'>Inactivo</span>";
 									}
 								?>
-										<tr>
-										<td><?php echo $index++;?></td>
-					          <td><?php echo $row['descripcion'];?></td>
-										<td><?php echo $row['presentacion'];?></td>
-										<td><?php echo $row['precio_venta'];?></td>
-										<td><?php echo $row['sintoma'];?></td>
-										<td><?php echo $receta;?></td>
-										<td><?php echo $estado;?></td>
-										<td><span class="label-as-badge <?php echo $color;?>"><?php echo $row['stock'];?></span></td>
-					          <td><?php echo $row['tipo']; ?></td>
-											<td><button type="button"
-												data-id1="<?php echo $row["idproducto"];?>"
-												data-id2="<?php echo $row["descripcion"];?>"
-												data-id3="<?php echo $row["presentacion"];?>"
-												data-id4="<?php echo $row["precio_venta"];?>"
-												data-id5="<?php echo $row["descuento"];?>"
-												class="btn btn-info btn-sm btn-icon icon-left btn_add"><i class='entypo-basket'></i>Agregar</button>
-											</td>
+                                <tr>
+                                    <td><?php echo $index++;?></td>
+                                    <td><?php echo $row['descripcion'];?></td>
+                                    <td><?php echo $row['presentacion'];?></td>
+                                    <td><?php echo $row['precio_venta'];?></td>
+                                    <td><?php echo $row['sintoma'];?></td>
+                                    <td><?php echo $receta;?></td>
+                                    <td><?php echo $estado;?></td>
+                                    <td><span
+                                            class="label-as-badge <?php echo $color;?>"><?php echo $row['stock'];?></span>
+                                    </td>
+                                    <td><?php echo $row['tipo']; ?></td>
+                                    <td><button type="button" data-id1="<?php echo $row["idproducto"];?>"
+                                            data-id2="<?php echo $row["descripcion"];?>"
+                                            data-id3="<?php echo $row["presentacion"];?>"
+                                            data-id4="<?php echo $row["precio_venta"];?>"
+                                            data-id5="<?php echo $row["descuento"];?>"
+                                            class="btn btn-info btn-sm btn-icon icon-left btn_add"><i
+                                                class='entypo-basket'></i>Agregar</button>
+                                    </td>
 
-										</tr>
-								<?php
+                                </tr>
+                                <?php
 								};
 							?>
-									</tbody>
-					</table>
-				</div>
+                            </tbody>
+                        </table>
+                    </div>
 
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<script src="../assets/alert/alertify/alertify.js"></script>
-<script src="../assets/alert/jquery-ui.js"></script>
-<script type="text/javascript">
-$(function(){
-                $("#des").autocomplete({
-						  	//autoFocus:true,
-                source: "busquedaproductos.php",
-                minLength: 2,
-                select: function(event, ui) {
-								event.preventDefault();
-			          //$('#cod').val(ui.item.codigo);
-								$('#des').val(ui.item.descripcion);
-								$('#pres').val(ui.item.presentacion);
-								$('#pre').val(ui.item.precio);
-								$('#dsc').val(ui.item.descuento);
-								$('#idproducto').val(ui.item.idproducto);
-							//	guardar();
-			         }
-            });
-		});
-		//busqueda de clientes
-		$(function() {
-		            $("#cli").autocomplete({
-		                source: "busquedaclientes.php",
-		                minLength: 2,
-		                select: function(event, ui) {
-							event.preventDefault();
-		                  $('#cli').val(ui.item.nombres);
-							         $('#idcliente').val(ui.item.idcliente);
-											 $('#documento').val(ui.item.documento);
-					     }
-		        });
-				});
-</script>
-<script>
-$(document).ready(function(){
-      function fetch_data()
-      {
-           $.ajax({
-                url:"consultacarrito.php",
-                method:"POST",
-                success:function(data){
-                     $('#live_data').html(data);
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal-2">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Agregar Cliente</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <form role="form" name="miformulario" action="../cliente/capturar2.php" method="post">
+                            <input type="hidden" name="txtidsucu_c" value=<?php echo "$idsucursal"; ?>>
+                            <div class="col-md-6 form-group">
+                                <label><strong>Nombre(*)</strong></label>
+                                <input type="text" name="txtno" class="form-control" required
+                                    placeholder="ingrese su nombre">
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                                <label><strong>DPI(*)</strong></label>
+                                <input type="text" name="txtdo" id="txtdo" minLength="13" maxlength="13" required
+                                    class="form-control" placeholder="ingrese su numero">
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                                <label><strong>Direccion:</strong></label>
+                                <input type="text" name="txtdi" class="form-control" placeholder="ingrese su direccion">
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                                <label><strong>Telefono</strong></label>
+                                <input type="text" name="txtte" class="form-control" placeholder="ingrese su telefono">
+                            </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <div align="right">
+                            <div align="left">
+                                (*) campos obligatorios
+                            </div>
+                            <button type="submit" name="funcion" value="registrar"
+                                class="btn btn-info btn-icon icon-left"><i class="entypo-check"></i>Registrar</button>
+                        </div>
+                    </div>
+
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+    <script src="../assets/alert/alertify/alertify.js"></script>
+    <script src="../assets/alert/jquery-ui.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("#des").autocomplete({
+            //autoFocus:true,
+            source: "busquedaproductos.php",
+            minLength: 2,
+            select: function(event, ui) {
+                event.preventDefault();
+                //$('#cod').val(ui.item.codigo);
+                $('#des').val(ui.item.descripcion);
+                $('#pres').val(ui.item.presentacion);
+                $('#pre').val(ui.item.precio);
+                $('#dsc').val(ui.item.descuento);
+                $('#idproducto').val(ui.item.idproducto);
+                //	guardar();
+            }
+        });
+    });
+    //busqueda de clientes
+    $(function() {
+        $("#cli").autocomplete({
+            source: "busquedaclientes.php",
+            minLength: 2,
+            select: function(event, ui) {
+                event.preventDefault();
+                $('#cli').val(ui.item.nombres);
+                $('#idcliente').val(ui.item.idcliente);
+                $('#documento').val(ui.item.documento);
+            }
+        });
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        function fetch_data() {
+            $.ajax({
+                url: "consultacarrito.php",
+                method: "POST",
+                success: function(data) {
+                    $('#live_data').html(data);
                 }
-           });
-      }
-      fetch_data();
-						//calculo del igv , subtotal, etc
-						function fetch_igv()
-						{
-								 $.ajax({
-											url:"consultaigv.php",
-											method:"POST",
-											success:function(data){
-													 $('#live_igv').html(data);
+            });
+        }
+        fetch_data();
+        //calculo del igv , subtotal, etc
+        function fetch_igv() {
+            $.ajax({
+                url: "consultaigv.php",
+                method: "POST",
+                success: function(data) {
+                    $('#live_igv').html(data);
 
-											}
-								 });
-						}
-						fetch_igv();
+                }
+            });
+        }
+        fetch_igv();
 
-						function fetch_total()
-						{
-								 $.ajax({
-											url:"consultatotal.php",
-											method:"POST",
-											success:function(data){
-													 $('#live_total').html(data);
+        function fetch_total() {
+            $.ajax({
+                url: "consultatotal.php",
+                method: "POST",
+                success: function(data) {
+                    $('#live_total').html(data);
 
-											}
-								 });
-						}
-						fetch_total();
+                }
+            });
+        }
+        fetch_total();
 
 
-// guardar por codigo de barra
-      $(document).on('submit', '#barcode_form', function(event){
-					event.preventDefault();
-						var cod = $('#cod').val();
-           $.ajax({
-                url:"guardarcarrito.php",
-                method:"POST",
-                data:{cod:cod},
-                dataType:"text",
-                     success:function(data){
-                       console.log(data);
-                        //alertify.alert('Agregar',data);
-                        fetch_data();
-												fetch_igv();
-									      fetch_total();
-                        limpiar();
-                     }
-           })
-      });
+        // guardar por codigo de barra
+        $(document).on('submit', '#barcode_form', function(event) {
+            event.preventDefault();
+            var cod = $('#cod').val();
+            $.ajax({
+                url: "guardarcarrito.php",
+                method: "POST",
+                data: {
+                    cod: cod
+                },
+                dataType: "text",
+                success: function(data) {
+                    console.log(data);
+                    //alertify.alert('Agregar',data);
+                    fetch_data();
+                    fetch_igv();
+                    fetch_total();
+                    limpiar();
+                }
+            })
+        });
 
 
-	// guardar por descripcion
-	$(document).on('click', '.btn_add', function(){
-			 var idproducto=$(this).data("id1");
-			 var des=$(this).data("id2");
-			 var pres=$(this).data("id3");
-			 var pre=$(this).data("id4");
-			 var dsc=$(this).data("id5");
+        // guardar por descripcion
+        $(document).on('click', '.btn_add', function() {
+            var idproducto = $(this).data("id1");
+            var des = $(this).data("id2");
+            var pres = $(this).data("id3");
+            var pre = $(this).data("id4");
+            var dsc = $(this).data("id5");
 
-						$.ajax({
-								 url:"guardarcarrito2.php",
-								 method:"POST",
-								 data:{idproducto:idproducto,des:des,pres:pres,pre:pre,dsc:dsc},
-								 dataType:"text",
-								 success:function(data){
-										//alertify.alert('Agregar',data);
-										fetch_data();
-										fetch_igv();
-										fetch_total();
-										limpiar();
-								 }
-						});
-	});
+            $.ajax({
+                url: "guardarcarrito2.php",
+                method: "POST",
+                data: {
+                    idproducto: idproducto,
+                    des: des,
+                    pres: pres,
+                    pre: pre,
+                    dsc: dsc
+                },
+                dataType: "text",
+                success: function(data) {
+                    //alertify.alert('Agregar',data);
+                    fetch_data();
+                    fetch_igv();
+                    fetch_total();
+                    limpiar();
+                }
+            });
+        });
 
-	$(document).on('click', '.btn_delete', function(){
-			 var id=$(this).data("id3");
+        $(document).on('click', '.btn_delete', function() {
+            var id = $(this).data("id3");
 
-						$.ajax({
-								 url:"eliminarcarrito.php",
-								 method:"POST",
-								 data:{id:id},
-								 dataType:"text",
-								 success:function(data){
-									//   alertify.alert('Venta','Producto Eliminado del carrito.', function(){
-									//
-									// });
-									fetch_data();
-									fetch_igv();
-									fetch_total();
-								 }
-						});
-	});
+            $.ajax({
+                url: "eliminarcarrito.php",
+                method: "POST",
+                data: {
+                    id: id
+                },
+                dataType: "text",
+                success: function(data) {
+                    //   alertify.alert('Venta','Producto Eliminado del carrito.', function(){
+                    //
+                    // });
+                    fetch_data();
+                    fetch_igv();
+                    fetch_total();
+                }
+            });
+        });
 
-	  function limpiar()
-      {
-	       $('#cod').val('');
-         $('#des').val('');
-         $('#pres').val('');
-         $('#pre').val('');
-				 $('#idproducto').val('');
-				 $('#dsc').val('');
-         $('#cod').focus();
-      }
-			function edit_data(id, text, cantidad){
-				//var cantidad=$('#cantidad').val();
-					$.ajax({
-							 url:"actualizarcarrito.php",
-							 method:"POST",
-							 data:{id:id,text:text,cantidad:cantidad},
-							 dataType:"text",
+        function limpiar() {
+            $('#cod').val('');
+            $('#des').val('');
+            $('#pres').val('');
+            $('#pre').val('');
+            $('#idproducto').val('');
+            $('#dsc').val('');
+            $('#cod').focus();
+        }
 
-					}).success(function(data){
-					alertify.alert('mensaje',data);
-					 //alert(data);
-					 fetch_data();
- 					fetch_igv();
- 					fetch_total();
-					});
-		 }
-		 function edit_datap(id, text, precio){
-			 //var cantidad=$('#cantidad').val();
-				 $.ajax({
-							url:"actualizarcarritop.php",
-							method:"POST",
-							data:{id:id, text:text,precio:precio},
-							dataType:"text",
+        function edit_data(id, text, cantidad) {
+            //var cantidad=$('#cantidad').val();
+            $.ajax({
+                url: "actualizarcarrito.php",
+                method: "POST",
+                data: {
+                    id: id,
+                    text: text,
+                    cantidad: cantidad
+                },
+                dataType: "text",
 
-				 }).success(function(data){
-				 alertify.alert(data);
-					//alert(data);
-					fetch_data();
-					 fetch_igv();
-					 fetch_total();
-				 });
-		}
-		function edit_datad(id, text, descuento){
-			//var cantidad=$('#cantidad').val();
-				$.ajax({
-						 url:"actualizarcarritod.php",
-						 method:"POST",
-						 data:{id:id, text:text,descuento:descuento},
-						 dataType:"text",
+            }).success(function(data) {
+                alertify.alert('mensaje', data);
+                //alert(data);
+                fetch_data();
+                fetch_igv();
+                fetch_total();
+            });
+        }
 
-				}).success(function(data){
-									alertify.alert('mensaje',data);
-				 //alert(data);
-				 fetch_data();
- 				fetch_igv();
- 				fetch_total();
-				});
-			}
+        function edit_datap(id, text, precio) {
+            //var cantidad=$('#cantidad').val();
+            $.ajax({
+                url: "actualizarcarritop.php",
+                method: "POST",
+                data: {
+                    id: id,
+                    text: text,
+                    precio: precio
+                },
+                dataType: "text",
 
-			$(document).on('blur', '.cantidad', function(event){
-							event.preventDefault();
-					 //var id = $(this).data("id2");
-					 var id = $(this).attr("id2");
-					 var cantidad = $(this).text();
-					 edit_data(id,cantidad,"cantidad");
-			});
+            }).success(function(data) {
+                alertify.alert(data);
+                //alert(data);
+                fetch_data();
+                fetch_igv();
+                fetch_total();
+            });
+        }
 
-			$(document).on('blur', '.precio', function(event){
-							event.preventDefault();
-					 //var id = $(this).data("id2");
-					 var id = $(this).attr("id1");
-					 var precio = $(this).text();
-					 edit_datap(id,precio,"precio");
-			});
+        function edit_datad(id, text, descuento) {
+            //var cantidad=$('#cantidad').val();
+            $.ajax({
+                url: "actualizarcarritod.php",
+                method: "POST",
+                data: {
+                    id: id,
+                    text: text,
+                    descuento: descuento
+                },
+                dataType: "text",
 
-			$(document).on('blur', '.descuento', function(event){
-							event.preventDefault();
-					 //var id = $(this).data("id2");
-					 var id = $(this).attr("id4");
-					 var descuento = $(this).text();
-					 edit_datad(id,descuento,"descuento");
-			});
+            }).success(function(data) {
+                alertify.alert('mensaje', data);
+                //alert(data);
+                fetch_data();
+                fetch_igv();
+                fetch_total();
+            });
+        }
+
+        $(document).on('blur', '.cantidad', function(event) {
+            event.preventDefault();
+            //var id = $(this).data("id2");
+            var id = $(this).attr("id2");
+            var cantidad = $(this).text();
+            edit_data(id, cantidad, "cantidad");
+        });
+
+        $(document).on('blur', '.precio', function(event) {
+            event.preventDefault();
+            //var id = $(this).data("id2");
+            var id = $(this).attr("id1");
+            var precio = $(this).text();
+            edit_datap(id, precio, "precio");
+        });
+
+        $(document).on('blur', '.descuento', function(event) {
+            event.preventDefault();
+            //var id = $(this).data("id2");
+            var id = $(this).attr("id4");
+            var descuento = $(this).text();
+            edit_datad(id, descuento, "descuento");
+        });
 
 
- });
-</script>
-<script>
-$(document).ready(function () {
-        $("#calcular").click(function (e) {
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $("#calcular").click(function(e) {
             var recibo = $("#recibo").val();
             var total = $("#total").val();
             var vuelto = parseFloat(recibo) - parseFloat(total);
@@ -456,45 +547,49 @@ $(document).ready(function () {
             $("#vuelto").val(vuelto.toFixed(2));
         });
     });
-</script>
-<script type="text/javascript">
-var responsiveHelper;
-var breakpointDefinition = {
-    tablet: 1024,
-    phone : 480
-};
-var tableContainer;
+    </script>
+    <script type="text/javascript">
+    var responsiveHelper;
+    var breakpointDefinition = {
+        tablet: 1024,
+        phone: 480
+    };
+    var tableContainer;
 
-	jQuery(document).ready(function($)
-	{
-		tableContainer = $("#table-1");
+    jQuery(document).ready(function($) {
+        tableContainer = $("#table-1");
 
-		tableContainer.dataTable({
-			"sPaginationType": "bootstrap",
-			"aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-			"bStateSave": true,
+        tableContainer.dataTable({
+            "sPaginationType": "bootstrap",
+            "aLengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            "bStateSave": true,
 
 
-		    // Responsive Settings
-		    bAutoWidth     : false,
-		    fnPreDrawCallback: function () {
-		        // Initialize the responsive datatables helper once.
-		        if (!responsiveHelper) {
-		            responsiveHelper = new ResponsiveDatatablesHelper(tableContainer, breakpointDefinition);
-		        }
-		    },
-		    fnRowCallback  : function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-		        responsiveHelper.createExpandIcon(nRow);
-		    },
-		    fnDrawCallback : function (oSettings) {
-		        responsiveHelper.respond();
-		    }
-		});
+            // Responsive Settings
+            bAutoWidth: false,
+            fnPreDrawCallback: function() {
+                // Initialize the responsive datatables helper once.
+                if (!responsiveHelper) {
+                    responsiveHelper = new ResponsiveDatatablesHelper(tableContainer,
+                        breakpointDefinition);
+                }
+            },
+            fnRowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                responsiveHelper.createExpandIcon(nRow);
+            },
+            fnDrawCallback: function(oSettings) {
+                responsiveHelper.respond();
+            }
+        });
 
-		$(".dataTables_wrapper select").select2({
-			minimumResultsForSearch: -1
-		});
-	});
-</script>
+        $(".dataTables_wrapper select").select2({
+            minimumResultsForSearch: -1
+        });
+    });
+    </script>
 </body>
+
 </html>

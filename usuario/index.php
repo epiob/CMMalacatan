@@ -41,12 +41,14 @@ $result=$objusuario->consultar("select * from usuario");
 			}else{
 			 $estado="<span class='label label-danger'>Inactivo</span>";
 			}
+			$fechaV = new DateTime($row['fechaingreso']);
+                $fechaV = $fechaV->format("d-m-Y");
 			?>
 					<tr>
 					<td><?php echo $row['idusu']; ?></td>
 					<td><?php echo $row['nombres']; ?></td>
           <td><?php echo $row['telefono']; ?></td>
-					 <td><?php echo $row['fechaingreso']; ?></td>
+					 <td><?php echo $fechaV; ?></td>
 				<td><?php echo $estado;?></td>
 					<td><?php echo "<a href='actualizar.php?idusu=".$row['idusu']."' class='btn btn-info btn-sm btn-icon icon-left'>"?><i class="entypo-pencil"></i>Editar</td>
 					</tr>

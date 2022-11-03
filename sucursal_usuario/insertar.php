@@ -24,7 +24,7 @@ $tusu='';
 		<div class="panel panel-info" data-collapsed="0">
 			<div class="panel-heading">
 				<div class="panel-title">
-					Registrar Rol Usuario
+					Registrar Bodega Usuario
 				</div>
 
 			</div>
@@ -48,7 +48,7 @@ $tusu='';
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label">Rol</label>
+						<label for="field-1" class="col-sm-3 control-label">Bodega</label>
 						<div class="col-sm-5">
 							<select name="tsucu" class='form-control' required>
 							  <?php

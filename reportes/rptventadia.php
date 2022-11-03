@@ -5,7 +5,7 @@ $idsucursal=$_SESSION["sucursal"];
 include_once("../conexion/clsConexion.php");
 $obj=new clsConexion;
 date_default_timezone_set('america/lima');
-$fecha_actual = date("Y-m-d");
+$fecha_actual = date("d-m-Y");
 $totalv = 0;
 $result=$obj->consultar("select * from venta WHERE idsucu_c='$idsucursal' AND  fecha='$fecha_actual' ");
 ?>

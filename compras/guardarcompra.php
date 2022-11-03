@@ -17,7 +17,7 @@ $data=$obj->consultar("SELECT imp_num FROM configuracion");
 		}
 $num=$data=$obj->consultar("select * from carritoc WHERE session_id='$usu'");
 if($num == 0) {
- print "<script>alert('No se pudo Registrar la compra agrege productos al carritoc.!')</script>";
+ print "<script>alert('No se pudo registrar el ingreso, agregue productos!')</script>";
  print("<script>window.location.replace('index.php');</script>");
 }else{
 $data=$obj->consultar("SELECT MAX(idcompra) as idcompra FROM compra");
@@ -72,7 +72,7 @@ $sqlt="DELETE FROM carritoc WHERE session_id='$usu'";
 $obj->ejecutar($sqlt);
 
 	echo"<script>
-    alertify.alert('compra', 'Compra Realizada con Exito!', function(){
+    alertify.alert('Ingreso', 'Ingreso realizado con exito!', function(){
 	alertify.success('Ok');
 	self.location='index.php';
 	});

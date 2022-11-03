@@ -1,4 +1,3 @@
-
 <?php
 include("../seguridad.php");
 ob_start();
@@ -26,22 +25,3 @@ $data=$obj->consultar("SELECT ROUND(SUM(importe)*$impuesto/100+SUM(importe),2) a
 			$total=$row['total'];
 		}
 ?>
-<div class="center">
-	<table>
-	  <tr>
-	    <td width="98">SUBTOTAL:</td>
-	    <td width="52"><?php if($subtotal==null){ echo '0.00';}else{echo "$mon".' '."$subtotal";}?></td>
-  </tr>
-	<tr>
-		<td width="35">IVA:</td>
-		<td width="52"><?php if($igv==null){ echo '0.00'; }else{ echo "$mon".' '."$igv";}?></td>
-	</tr>
-<tr>
-	<td width="110"><label>TOTAL:</label></td>
-	<td width="80"><?php  if($total==null){ echo '0.00';	}else{echo "$mon".' '."$total";}?>
-		 <input type="hidden" id="total" name="total" value="<?php echo $total;?>"/>
-	</td>
-</tr>
-
-	</table>
-</div>

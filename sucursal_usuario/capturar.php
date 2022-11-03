@@ -16,7 +16,7 @@ if($funcion=="modificar"){
 $sql="update sucursal_usuario set idusuu='$idu',idsucu='$ids' where idsucu_usu=$cod";
 $obj->ejecutar($sql);
 	echo"<script>
-    alertify.alert('sucursal usuario', 'Registro Actualizado!', function(){
+    alertify.alert('Bodega Usuario', 'Registro Actualizado!', function(){
 	alertify.success('Ok');
 	self.location='index.php';
 	});

@@ -26,9 +26,8 @@ $index = 1;
 <table class="table table-bordered datatable" id="table-1">
         <thead>
 						<tr class="info">
-						<th data-hide="phone"><a href="#">Num</a></th>
-						<th data-hide="phone"><a href="#">laboratorio</a></th>
-						<th data-hide="phone"><a href="#">Ruc</a></th>
+						<th data-hide="phone"><a href="#">#</a></th>
+						<th data-hide="phone"><a href="#">Laboratorio</a></th>
 						<th data-hide="phone"><a href="#">Direccion</a></th>
 						<th data-hide="phone"><a href="#">Telefono</a></th>
 						<th>Acciones</th>
@@ -42,7 +41,6 @@ $index = 1;
 					<tr>
 					<td><?php echo $index++; ?></td>
 					<td><?php echo $row['laboratorio']; ?></td>
-					<td><?php echo $row['ruc']; ?></td>
 					<td><?php echo $row['direccion']; ?></td>
 					 <td><?php echo $row['telefono']; ?></td>
 					<td>

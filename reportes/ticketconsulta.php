@@ -50,7 +50,8 @@ ON venta.idusuario = usuario.idusu
 			foreach((array)$result as $row){
 			$cliente=$row['nombres'];
 		  $usuario=$row['usuario'];
-			$fecha=$row['fecha'];
+            $fecha = new DateTime($row['fecha']);
+$fecha = $fecha->format("d-m-Y");  
 			$serie=$row['serie'];
 		  $num_docu=$row['num_docu'];
 			$subtotal=$row['subtotal'];
@@ -68,163 +69,132 @@ ON venta.idusuario = usuario.idusu
 }
 ?>
 <html>
+
 <head>
-<script type='text/javascript'>
-	window.onload=function(){
-		self.print();
-	}
-</script>
-	<meta charset="utf-8">
-<style media='print'>
-input{display:none;}
-</style>
-<style type="text/css">
+    <script type='text/javascript'>
+    window.onload = function() {
+        self.print();
+    }
+    </script>
+    <meta charset="utf-8">
+    <style media='print'>
+    input {
+        display: none;
+    }
+    </style>
+    <style type="text/css">
+    .zona_impresion {
+        width: 400px;
+        padding: 10px 5px 10px 5px;
+        float: left;
+        font-size: 12.5px;
+    }
 
-.zona_impresion{
-width: 400px;
-padding:10px 5px 10px 5px;
-float:left;
-font-size:12.5px;
-}
+    center {
+        text-align: center;
+    }
 
-center {
-	text-align: center;
-}
+    #negrita {
+        font-weight: bold;
+    }
+    </style>
+    <script>
+    function imprimir() {
+        var Obj = document.getElementById("desaparece");
+        Obj.style.visibility = 'hidden';
+        window.print();
+    }
 
-#negrita {
-	font-weight: bold;
-}
-</style>
-<script>
-function imprimir()
-{
-  var Obj = document.getElementById("desaparece");
-  Obj.style.visibility = 'hidden';
-  window.print();
-}
-function regresa()
-{
-   header("Location:index.php");
-}
-</script>
+    function regresa() {
+        header("Location:index.php");
+    }
+    </script>
 
 </head>
-<body >
-<div class="zona_impresion">
-<table  border="0" class="zona_impresion">
-  <tr>
-    <td colspan="2" align="center"><img src="../configuracion/foto/<?php echo $logo?>" width="210" height="50" /></td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center"><?php echo "$razon".'-  '."$ruc_letra".'  :'."$ruc_num";?></td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center"><?php echo "$dir".' TELF: '."$tel"?></td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center"> <p><?php echo "FECHA DE EMISION: ".date("Y-m-d H:i:s"); ?><br>
-    </p>
-	</td>
-  </tr>
-	<tr>
-	    <td colspan="5">=======================================================</td>
-	</tr>
-	<tr>
-    <td><b>TICKET Nº</b></td>
-    <td><b><?php echo $serie." - ".$num_docu?></b></td>
-  </tr>
-	<tr>
-		<td width="268">CLIENTE</td>
-    <td width="268"><?php echo "$cliente"?></td>
-  </tr>
-	<tr>
-		<td width="268">DNI</td>
-    <td width="268"><?php echo "$numdocucli"?></td>
-  </tr>
-  <tr>
-    <td>USUARIO:</td>
-    <td><?php echo "$usuario"?></td>
-  </tr>
 
-</table>
-<table border="0" width="300px" align="center" class="zona_impresion">
-<br>
+<body>
+  
+    <div class="zona_impresion">
+        <table border="0" class="zona_impresion">
+            <tr>
+                <td colspan="2" align="center">
+                <p><?php echo "FECHA DE EMISION: ".$fecha; ?><br>
+                    </p>
+                <p><?php echo "FECHA DE IMPRESION: ".date("d-m-Y H:i:s"); ?><br>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">=======================================================</td>
+            </tr>
+            <tr>
+                <td><b>TICKET Nº</b></td>
+                <td><b><?php echo $serie." - ".$num_docu?></b></td>
+            </tr>
+            <tr>
+                <td width="268">CLIENTE</td>
+                <td width="268"><?php echo "$cliente"?></td>
+            </tr>
+            <tr>
+                <td width="268">DPI</td>
+                <td width="268"><?php echo "$numdocucli"?></td>
+            </tr>
+            <tr>
+                <td>USUARIO:</td>
+                <td><?php echo "$usuario"?></td>
+            </tr>
 
-    <tr>
-        <td width="49"><b>CANT.</td>
-        <td width="219"><b>DESCRIPCIÓN</td>
-				<td width="49"><b>P.UNIT.</td>
-				<td width="49"><b>DSCTO.</td>
-        <td width="68" align="right"><b>IMPORTE</b></td>
-  </tr>
-    <tr>
-      <td colspan="5">=======================================================</td>
-    </tr>
-   	<?php
+        </table>
+        <table border="0" width="300px" align="center" class="zona_impresion">
+            <br>
+
+            <tr>
+                <td width="49"><b>CANT.</td>
+                <td width="219"><b>DESCRIPCIÓN</td>
+                <td width="49"><b>P.UNIT.</td>
+            
+            </tr>
+            <tr>
+                <td colspan="5">=======================================================</td>
+            </tr>
+            <?php
 		foreach((array)$result as $row){
 			?>
-					<tr>
-			      <td><?php echo $row['cantidad']; ?></td>
-					  <td><?php echo $row['descripcion'];?></td>
-						<td><?php echo $row['precio'];?>
-						<td><?php echo $row['descuento'];?>
-					  <td align='right'><?php echo $row['importe']; ?></td>
-					</tr>
-			<?php
+            <tr>
+                <td><?php echo $row['cantidad']; ?></td>
+                <td><?php echo $row['descripcion'];?></td>
+                <td><?php echo $row['precio'];?>
+                    <!-- <td><?php echo $row['descuento'];?> -->
+                    <!-- <td align='right'><?php echo $row['importe']; ?></td> -->
+            </tr>
+            <?php
 			};
 		?>
-		<tr>
-		  <td colspan="5">=======================================================</td>
-		</tr>
-		 <tr>
-    <td>&nbsp;</td>
-    <td colspan="3" align="right"><?php echo 'TOTAL A PAGAR: '."$mon";?></td>
-    <td align="right"><?php echo $subtotal?></td>
-    </tr>
-	 <tr>
-    <td>&nbsp;</td>
-    <td colspan="3"  align="right"><?php echo "$imp_letra".'- '."$imp_num".'%:'."$mon";?></td>
-    <td align="right"><?php echo $igv?></td>
-    </tr>
-    <tr>
-    <td>&nbsp;</td>
-    <td colspan="3"  align="right"><?php echo 'IMPORTE TOTAL: '."$mon";?></td>
-    <td align="right"><?php echo $total?></td>
-    </tr>
-		<tr>
-		  <td colspan="5">=======================================================</td>
-		</tr>
-		<tr>
-		<td>&nbsp;</td>
-		<td colspan="3" align="right"><?php echo 'EFECTIVO: '."$mon";?></td>
-		<td align="right"><?php echo $efectivo?></td>
-		</tr>
-		<tr>
-		<td>&nbsp;</td>
-		<td colspan="3"  align="right"><?php echo 'VUELTO: '."$mon";?></td>
-		<td align="right"><?php echo $vuelto?></td>
-		</tr>
-    <tr>
-      <td colspan="5" align="left"><?php echo "SON:"." ".numtoletras($total);?></td>
-    </tr>
-    <tr>
-      <td colspan="5">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="5" align="center">Gracias por su compra...</td>
-    </tr>
-    <tr>
+            <tr>
+                <td colspan="5">=======================================================</td>
+            </tr>
 
-			<td colspan="3" align="left"><input type="button" onClick="location.href='../venta/consultaventas.php'" value="regresar">
-			</td>
+            <tr>
+                <td colspan="5" align="center">Siempre cuidando de tu salud.</td>
+            </tr>
+            <tr>
+                <td colspan="5" align="center">Municipalidad de Malacatan</td>
+            </tr>
+            <tr>
 
-      <td colspan="3" align="center"><input type="button" id="desaparece" onClick="imprimir()" value="Imprimir"></td>
-    </tr>
+                <td colspan="3" align="left"><input type="button" onClick="location.href='../venta/consultaventas.php'"
+                        value="regresar">
+                </td>
 
-</table>
-</div>
-<p><br>
-</p>
-<p>
+                <td colspan="3" align="center"><input type="button" id="desaparece" onClick="imprimir()"
+                        value="Imprimir"></td>
+            </tr>
+
+        </table>
+    </div>
+    <p><br>
+    </p>
+    <p>
 </body>
+
 </html>

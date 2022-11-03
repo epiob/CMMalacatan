@@ -37,10 +37,6 @@ $data=$obj->consultar("SELECT * FROM laboratorio_proveedor WHERE idlab_pro='".$o
 					</div>
 
 					<div class="col-md-6 form-group">
-							<label><strong>Ruc(*)</strong></label>
-					<input type="text" maxlength="11" name="txtr" required class="form-control" id="field-file" placeholder="ingrese su ruc" value="<?php echo $r; ?>"title="El numero de RUC debe contener 11 digitos" pattern="[0-9]{11}">
-</div>
-					<div class="col-md-6 form-group">
 							<label><strong>Direccion(*):</strong></label>
 					        <input type="text" name="txtdir" class="form-control" required id="field-file" placeholder="ingrese su direccion" value="<?php echo $dir ?>">
 					</div>

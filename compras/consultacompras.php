@@ -6,7 +6,13 @@ ob_start();
 $usu=$_SESSION["usuario"];
 $idsucursal=$_SESSION["sucursal"];
 $objVentas=new clsConexion;
+
+
 $result=$objVentas->consultar("select * from compra WHERE idsucu_c='$idsucursal' ORDER BY idcompra DESC");
+
+
+
+
 ?>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8_spanish_ci" />
@@ -15,7 +21,7 @@ $result=$objVentas->consultar("select * from compra WHERE idsucu_c='$idsucursal'
 	<div class="main-content">
 	<?php include('../central/cabecera.php');?>
 <hr/>
-<h2>Compras</h2>
+<h2>Ingresos</h2>
 <br/>
 <table class="table table-bordered datatable" id="table-1">
         <thead>

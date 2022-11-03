@@ -5,13 +5,12 @@ $obj=new clsConexion;
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=data.csv');
 $output = fopen("php://output", "w");
-fputcsv($output, array('Codigo', 'descripcion', 'presentacion', 'stock', 'precio_venta', 'reg_sanitario', 'laboratorio'));
-$result=$obj->consultar("SELECT productos.codigo
-     , productos.descripcion
+fputcsv($output, array( 'descripcion', 'presentacion', 'stock', 'precio_venta', 'precio_compra','laboratorio'));
+$result=$obj->consultar("SELECT productos.descripcion
      , presentacion.presentacion
      , productos.stock
      , productos.precio_venta
-     , productos.reg_sanitario
+     , productos.precio_compra
      , laboratorio_proveedor.laboratorio
 FROM
   productos

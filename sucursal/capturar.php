@@ -19,7 +19,7 @@ $se=trim($obj->real_escape_string($_POST['txtse'],ENT_QUOTES));
 // $ruc_letra=trim($obj->real_escape_string(strip_tags($_POST['txtimpnom'],ENT_QUOTES)));
 // $ruc_num=trim($obj->real_escape_string(strip_tags($_POST['txtimpnum'],ENT_QUOTES)));
 
-$sql="update sucursal set razon_social='$ra',direccion='$di' where idsucursal=$cod";
+$sql="update sucursal set razon_social='$ra',direccion='$di',serie='$se' where idsucursal=$cod";
 
 $obj->ejecutar($sql);
 	echo"<script>
@@ -34,7 +34,7 @@ $ra=trim($obj->real_escape_string($_POST['txtra'],ENT_QUOTES));
 $di=trim($obj->real_escape_string($_POST['txtdi'],ENT_QUOTES));
 /*$te=trim($obj->real_escape_string($_POST['txtte'],ENT_QUOTES));*/
 /*$re=trim($obj->real_escape_string($_POST['txtre'],ENT_QUOTES));*/
-/*$se=trim($obj->real_escape_string($_POST['txtse'],ENT_QUOTES));
+$se=trim($obj->real_escape_string($_POST['txtse'],ENT_QUOTES));
 /*$ruc_letra=trim($obj->real_escape_string(strip_tags($_POST['txtimpnom'],ENT_QUOTES)));
 $ruc_num=trim($obj->real_escape_string(strip_tags($_POST['txtimpnum'],ENT_QUOTES)));*/
 

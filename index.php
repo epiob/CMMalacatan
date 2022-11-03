@@ -138,14 +138,23 @@ filter: alpha(opacity=80);
      header('location:inicio/index.php');
 
     }
-    else{
-     $_SESSION["autentificado"]=1;
-     $_SESSION["usuario"]=$usu;
-     $_SESSION["clave"]=$clavemd5;
-     $_SESSION["sucursal"]=$sucu;
-		 $_SESSION["tipo"]=$tipo;
-    header('location:inicio/index2.php');
-    }
+    else if($tipo=='USUARIO'){
+        $_SESSION["autentificado"]=1;
+        $_SESSION["usuario"]=$usu;
+        $_SESSION["clave"]=$clavemd5;
+        $_SESSION["sucursal"]=$sucu;
+            $_SESSION["tipo"]=$tipo;
+       header('location:inicio/index2.php');
+       }
+       else if($tipo=='BODEGA'){
+        $_SESSION["autentificado"]=1;
+        $_SESSION["usuario"]=$usu;
+        $_SESSION["clave"]=$clavemd5;
+        $_SESSION["sucursal"]=$sucu;
+            $_SESSION["tipo"]=$tipo;
+       header('location:inicio/index3.php');
+       }
+    
   }
 ?>
 <script src="assets/js/jquery-1.11.0.min.js"></script>

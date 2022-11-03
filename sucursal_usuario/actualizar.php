@@ -21,25 +21,26 @@ $data=$obj->consultar("SELECT * FROM sucursal_usuario WHERE idsucu_usu='".$obj->
 ?>
 
 <div class="page-container">
-	<div class="main-content">
-		<!-- <?php include('../central/cabecera.php');?> -->
-<hr/>
-<div class="row">
-	<div class="col-md-12">
-		<div class="panel panel-info" data-collapsed="0">
-			<div class="panel-heading">
-				<div class="panel-title">
-					Actualizar Municipio usuario
-				</div>
+    <div class="main-content">
+        <?php include('../central/cabecera.php');?>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info" data-collapsed="0">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Actualizar Bodega Usuario
+                        </div>
 
-			</div>
-			<div class="panel-body">
-				<form role="form" class="form-horizontal form-groups-bordered" action="capturar.php" method="post">
-					<div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label">Usuario nombres:</label>
-						<div class="col-sm-5">
-							<select name="tusu" class='form-control' required>
-							  <?php
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" class="form-horizontal form-groups-bordered" action="capturar.php"
+                            method="post">
+                            <div class="form-group">
+                                <label for="field-1" class="col-sm-3 control-label">Usuario nombres:</label>
+                                <div class="col-sm-5">
+                                    <select name="tusu" class='form-control' required>
+                                        <?php
 																		$result=$obj->consultar("select * from usuario");
 							                    	foreach((array)$result as $row){
 																		if($row['idusu']==$tusu){
@@ -49,14 +50,14 @@ $data=$obj->consultar("SELECT * FROM sucursal_usuario WHERE idsucu_usu='".$obj->
 																		}
 																	}
 									?>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="field-1" class="col-sm-3 control-label">Municipio</label>
-						<div class="col-sm-5">
-							<select name="tsucu" class='form-control' required>
-							  <?php
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="field-1" class="col-sm-3 control-label">Municipio</label>
+                                <div class="col-sm-5">
+                                    <select name="tsucu" class='form-control' required>
+                                        <?php
 																		$result=$obj->consultar("select * from sucursal");
 							                    	foreach((array)$result as $row){
 																		if($row['idsucursal']==$tsucu){
@@ -66,21 +67,23 @@ $data=$obj->consultar("SELECT * FROM sucursal_usuario WHERE idsucu_usu='".$obj->
 																		}
 																	}
 									?>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-3 col-sm-5">
-							<button type="submit" value="modificar" class="btn btn-info"><i class="entypo-pencil"></i>Modificar</button>
-							<input type="hidden" name="funcion" id="funcion" value="modificar"/>
-							<input type="hidden" name="cod" value="<?php echo $cod;?>"/>
-							 <a class="btn btn btn-green" href="index.php"><i class="entypo-cancel"></i>Cancelar</a></button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-5">
+                                    <button type="submit" value="modificar" class="btn btn-info"><i
+                                            class="entypo-pencil"></i>Modificar</button>
+                                    <input type="hidden" name="funcion" id="funcion" value="modificar" />
+                                    <input type="hidden" name="cod" value="<?php echo $cod;?>" />
+                                    <a class="btn btn btn-green" href="index.php"><i
+                                            class="entypo-cancel"></i>Cancelar</a></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

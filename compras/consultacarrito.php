@@ -61,7 +61,7 @@ $item[$index] = $row;
 };
 }else{
 echo"<tr>
-<td colspan='8'align='center'>No Se Encontro Productos Agregados Al carrito</td>
+<td colspan='8'align='center'>No Se Encontro Productos Agregados </td>
 						 </tr>";
 }
 ?>

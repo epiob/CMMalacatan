@@ -10,7 +10,7 @@ $data=$obj->consultar("SELECT imp_num FROM configuracion");
 		}
 $num=$data=$obj->consultar("select * from carrito WHERE session_id='$usu'");
 if($num == 0) {
- print "<script>alert('No se pudo Registrar la venta agrege productos al carrito.!')</script>";
+ print "<script>alert('No se pudo registrar el egreso, agregue productos!')</script>";
  print("<script>window.location.replace('index.php');</script>");
 }else{
 $data=$obj->consultar("SELECT MAX(idventa) as idventa FROM venta");
