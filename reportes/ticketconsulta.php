@@ -113,14 +113,14 @@ $fecha = $fecha->format("d-m-Y");
 </head>
 
 <body>
-  
+
     <div class="zona_impresion">
         <table border="0" class="zona_impresion">
             <tr>
                 <td colspan="2" align="center">
-                <p><?php echo "FECHA DE EMISION: ".$fecha; ?><br>
+                    <p><?php echo "FECHA DE EMISION: ".$fecha; ?><br>
                     </p>
-                <p><?php echo "FECHA DE IMPRESION: ".date("d-m-Y H:i:s"); ?><br>
+                    <p><?php echo "FECHA DE IMPRESION: ".date("d-m-Y H:i:s"); ?><br>
                     </p>
                 </td>
             </tr>
@@ -152,7 +152,7 @@ $fecha = $fecha->format("d-m-Y");
                 <td width="49"><b>CANT.</td>
                 <td width="219"><b>DESCRIPCIÓN</td>
                 <td width="49"><b>P.UNIT.</td>
-            
+
             </tr>
             <tr>
                 <td colspan="5">=======================================================</td>
@@ -164,8 +164,7 @@ $fecha = $fecha->format("d-m-Y");
                 <td><?php echo $row['cantidad']; ?></td>
                 <td><?php echo $row['descripcion'];?></td>
                 <td><?php echo $row['precio'];?>
-                    <!-- <td><?php echo $row['descuento'];?> -->
-                    <!-- <td align='right'><?php echo $row['importe']; ?></td> -->
+
             </tr>
             <?php
 			};

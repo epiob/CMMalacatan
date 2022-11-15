@@ -87,6 +87,29 @@ $usu=$_SESSION["usuario"];
 				</li>';
 			}
 		 ?>
+
+                <?php
+if ($tipo=="BODEGA") {
+echo '<li>
+<a href="../producto/index.php"><i class="entypo-user"></i><span>Producto</span></a>
+</li>';
+}
+?>
+                <?php
+			if ($tipo=="BODEGA") {
+				echo '<li>
+				<a href=""><i class="entypo-doc-text"></i><span>Mantenimiento</span></a>
+				<ul>
+					<li><a href="../presentacion/index.php"><span>Presentacion</span></a></li>
+					<li><a href="../laboratorio/index.php"><span>Laboratorio Proveedor</span></a></li>
+					<li><a href="../sintomas/index.php"><span>Sintomas</span></a></li>
+          <li><a href="../lote/index.php"><span>lote</span></a></li>
+				</ul>
+				</li>';
+			}
+		 ?>
+
+
                 <?php
        if ($tipo=="USUARIO") {
         echo '<li>
@@ -94,6 +117,22 @@ $usu=$_SESSION["usuario"];
         </li>';
        }
       ?>
+
+
+
+                <?php
+		 if ($tipo=="BODEGA") {
+       echo '<li>
+       <a href=""><i class="entypo-pencil"></i><span>Ingresos</span></a>
+         <ul>
+           <li><a href="../compras/index.php"><span>Ingresos</span></a></li>
+           <li><a href="../compras/consultacompras.php"><span>Consulta Ingresos</span></a></li>
+         </ul>
+       </li>';
+				}
+			?>
+
+
                 <?php
 			if ($tipo=="ADMINISTRADOR" || $tipo=="USUARIO") {
 				echo '<li>

@@ -59,21 +59,29 @@ opacity: 0.8;
 filter: alpha(opacity=80);
 -khtml-opacity: 0.8;
 }
+
+.logo-umg{
+  text-align: center ;
+}
+img{
+  border: 0;
+}
   </style>
 </head>
 <body class='transparente'>
+
 <div class="login-box">
   <!-- /.login-logo -->
   <div class="login-box-body">
     <div class="login-logo">
       <!-- <img src="assets/images/users.png" width="100" height="100" /> -->
-			  <img src="configuracion/foto/logo.jpg" width="150" height="165" />
+			  <img style = "border-style: none" src="configuracion/foto/logo.jpg" width="150" height="165" />
     </div>
     <p class="login-box-msg"></p>
     	<form name="form1" method="post" action="" >
         <div class="form-group has-feedback">
           <select style="width: 100%;" name="sucursal" id="sucursal" class="form-control action" required >
-           <option value="" > Tipo de usuario</option>
+           <option value="" > Seleccione Bodega</option>
            <?php echo $sucursal?>
           </select>
         </div>
@@ -96,6 +104,11 @@ filter: alpha(opacity=80);
       <br />
       <span>2022</span><span></span>
     </div>
+    
+  </div>
+  <hr>
+  <div class='logo-umg'>
+    <img src="configuracion/foto/umg.png" style = "border-style: none" width="150" height="165" />
   </div>
 </body>
 </html>

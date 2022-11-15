@@ -42,7 +42,7 @@ $idsucursal=$_SESSION["sucursal"];
 
                     </div>
                     <div class="panel-body">
-                        <form role="form" name="miformulario" action="capturar2.php" method="post">
+                        <form role="form" name="miformulario" action="capturar.php" method="post">
                             <input type="hidden" name="txtidsucu_c" value=<?php echo "$idsucursal"; ?>>
                             <div class="col-md-6 form-group">
                                 <label><strong>Nombre(*)</strong></label>

@@ -11,83 +11,91 @@ $item = array();
 $index = 1;
 ?>
 <!DOCTYPE html>
-	<div class="page-container">
-	<div class="main-content">
-	<hr/>
-<h2>Sintomas</h2>
-<br />
-<a href="insertar.php" class="btn btn-primary">
-	<i class="entypo-plus"></i>
-	Nuevo
-</a>
-<br/>
-<br/>
-<table class="table table-bordered datatable" id="table-1">
-        <thead>
-						<tr class="info">
-						<th data-hide="phone"><a href="#">Num</a></th>
-						<th data-hide="phone"><a href="#">sintomas</a></th>
-						<th>Acciones</th>
-					    </tr>
-		</thead>
-				<tbody>
-		<?php
+<div class="page-container">
+    <div class="main-content">
+        <hr />
+        <h2>Sintomas</h2>
+        <br />
+        <a href="insertar.php" class="btn btn-primary">
+            <i class="entypo-plus"></i>
+            Nuevo
+        </a>
+        <br />
+        <br />
+        <table class="table table-bordered datatable" id="table-1">
+            <thead>
+                <tr class="info">
+                    <th data-hide="phone"><a href="#">Num</a></th>
+                    <th data-hide="phone"><a href="#">sintomas</a></th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
 		foreach((array)$result as $row){
 				$item[$index] = $row;
 			?>
-					<tr>
-					<td><?php echo $index++; ?></td>
-					<td><?php echo $row['sintoma']; ?></td>
-					<td>
-						<?php echo "<a href='actualizar.php?idsintoma=".$row['idsintoma']."' class='btn btn-info btn-sm btn-icon icon-left'><i class='entypo-pencil'></i>Editar</a>"?>
-						<?php echo "<a href='eliminar.php?cod=".$row['idsintoma']."' class='btn btn-danger btn-sm btn-icon icon-left'><i class='entypo-cancel'></i>Eliminar</a>"?>
-					</td>
-					</tr>
-			<?php
+                <tr>
+                    <td><?php echo $index++; ?></td>
+                    <td><?php echo $row['sintoma']; ?></td>
+                    <td>
+                        <?php echo "<a href='actualizar.php?idsintoma=".$row['idsintoma']."' class='btn btn-info btn-sm btn-icon icon-left'><i class='entypo-pencil'></i>Editar</a>"?>
+                        <?php 
+						if($tipo=="ADMINISTRADOR"){
+
+							echo "<a href='eliminar.php?cod=".$row['idsintoma']."' class='btn btn-danger btn-sm btn-icon icon-left'><i class='entypo-cancel'></i>Eliminar</a>";
+						}
+						?>
+                    </td>
+                </tr>
+                <?php
 			};
 		?>
-				</tbody>
-</table>
+            </tbody>
+        </table>
 
-<script type="text/javascript">
-var responsiveHelper;
-var breakpointDefinition = {
-    tablet: 1024,
-    phone : 480
-};
-var tableContainer;
+        <script type="text/javascript">
+        var responsiveHelper;
+        var breakpointDefinition = {
+            tablet: 1024,
+            phone: 480
+        };
+        var tableContainer;
 
-	jQuery(document).ready(function($)
-	{
-		tableContainer = $("#table-1");
+        jQuery(document).ready(function($) {
+            tableContainer = $("#table-1");
 
-		tableContainer.dataTable({
-			"sPaginationType": "bootstrap",
-			"aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-			"bStateSave": true,
+            tableContainer.dataTable({
+                "sPaginationType": "bootstrap",
+                "aLengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+                "bStateSave": true,
 
 
-		    // Responsive Settings
-		    bAutoWidth     : false,
-		    fnPreDrawCallback: function () {
-		        // Initialize the responsive datatables helper once.
-		        if (!responsiveHelper) {
-		            responsiveHelper = new ResponsiveDatatablesHelper(tableContainer, breakpointDefinition);
-		        }
-		    },
-		    fnRowCallback  : function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-		        responsiveHelper.createExpandIcon(nRow);
-		    },
-		    fnDrawCallback : function (oSettings) {
-		        responsiveHelper.respond();
-		    }
-		});
+                // Responsive Settings
+                bAutoWidth: false,
+                fnPreDrawCallback: function() {
+                    // Initialize the responsive datatables helper once.
+                    if (!responsiveHelper) {
+                        responsiveHelper = new ResponsiveDatatablesHelper(tableContainer,
+                            breakpointDefinition);
+                    }
+                },
+                fnRowCallback: function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                    responsiveHelper.createExpandIcon(nRow);
+                },
+                fnDrawCallback: function(oSettings) {
+                    responsiveHelper.respond();
+                }
+            });
 
-		$(".dataTables_wrapper select").select2({
-			minimumResultsForSearch: -1
-		});
-	});
-</script>
-<br /><!-- Footer -->
-	</div>
+            $(".dataTables_wrapper select").select2({
+                minimumResultsForSearch: -1
+            });
+        });
+        </script>
+        <br /><!-- Footer -->
+    </div>
 </div>

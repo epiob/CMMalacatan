@@ -50,7 +50,16 @@ $index = 1;
                         <td><?php echo $row['telefono']; ?></td>
                         <td>
                             <?php echo "<a href='actualizar.php?idcliente=".$row['idcliente']."' class='btn btn-info btn-sm btn-icon icon-left'><i class='entypo-pencil'></i>Editar</a>"?>
-                            <?php echo "<a href='eliminar.php?cod=".$row['idcliente']."' class='btn btn-danger btn-sm btn-icon icon-left'><i class='entypo-cancel'></i>Eliminar</a>"?>
+                            <?php 
+                            
+                            if($tipo=="ADMINISTRADOR"){
+                                echo "<a href='eliminar.php?cod=".$row['idcliente']."' class='btn btn-danger btn-sm btn-icon icon-left'><i class='entypo-cancel'></i>Eliminar</a>";  
+                            }
+                            
+                            
+                            //echo "<a href='eliminar.php?cod=".$row['idcliente']."' class='btn btn-danger btn-sm btn-icon icon-left'><i class='entypo-cancel'></i>Eliminar</a>"
+                            
+                            ?>
 
                         </td>
 

@@ -209,6 +209,9 @@ $fechaV = $fechaV->format("d-m-Y");
                     <br />
                     <br />
                     <footer class="main" align="center">
+                    <div class='logo-umg' 'text-align: center'>
+    <img src="../configuracion/foto/umg.png" style = "border-style: none" width="150" height="165" />
+  </div>
                         &copy; 2022 <strong>Universidad Mariano Galvez de Guatemala</strong> <a href="#"
                             target="_blank">1490-18-4664</a>
                     </footer>

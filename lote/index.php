@@ -44,7 +44,12 @@ $index = 1;
                     <td><?php echo $fechaV; ?></td>
                     <td>
                         <?php echo "<a href='actualizar.php?idlote=".$row['idlote']."' class='btn btn-info btn-sm btn-icon icon-left'><i class='entypo-pencil'></i>Editar</a>"?>
-                        <?php echo "<a href='eliminar.php?cod=".$row['idlote']."' class='btn btn-danger btn-sm btn-icon icon-left'><i class='entypo-cancel'></i>Eliminar</a>"?>
+                        <?php 
+                        if($tipo=="ADMINISTRADOR"){
+
+                            echo "<a href='eliminar.php?cod=".$row['idlote']."' class='btn btn-danger btn-sm btn-icon icon-left'><i class='entypo-cancel'></i>Eliminar</a>";
+                        }
+                        ?>
                 </tr>
                 </td>
 
